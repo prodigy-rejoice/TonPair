@@ -1,0 +1,7 @@
+class: Team
+table: teams
+fields:
+  id: int?
+  hackathonId: int
+  memberIds: List<int>
+  createdAt: DateTime

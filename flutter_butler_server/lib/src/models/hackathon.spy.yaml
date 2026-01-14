@@ -1,0 +1,10 @@
+class: Hackathon
+table: hackathons
+fields:
+  id: int?
+  name: String
+  code: String
+  startDate: DateTime
+  endDate: DateTime
+  description: String
+  ownerID: int

@@ -1,0 +1,20 @@
+emailIdp:
+  - login:
+  - startRegistration:
+  - verifyRegistrationCode:
+  - finishRegistration:
+  - startPasswordReset:
+  - verifyPasswordResetCode:
+  - finishPasswordReset:
+jwtRefresh:
+  - refreshAccessToken:
+matchmaking:
+  - findMatches:
+matchRequest:
+  - sendMatchRequest:
+  - respondToMatchRequest:
+userProfile:
+  - createProfile:
+  - getProfile:
+greeting:
+  - hello:

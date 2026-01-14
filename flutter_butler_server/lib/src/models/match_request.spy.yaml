@@ -1,0 +1,8 @@
+class: MatchRequest
+table: match_requests
+fields:
+  id: int?
+  fromUserId: int
+  toUserId: int
+  status: MatchStatus
+  createdAt: DateTime

@@ -1,0 +1,6 @@
+enum: ParticipantStatus
+serialized: byName
+values:
+  - searching
+  - inTeam
+  - idle

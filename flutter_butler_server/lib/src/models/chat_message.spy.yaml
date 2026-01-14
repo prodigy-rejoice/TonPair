@@ -1,0 +1,8 @@
+class: ChatMessage
+table: chat_messages
+fields:
+  id: int?
+  teamId: int
+  senderId: int
+  message: String
+  timestamp: DateTime

@@ -1,0 +1,5 @@
+class: MatchResult
+fields:
+  userId: int
+  score: double
+  reasons: List<String>

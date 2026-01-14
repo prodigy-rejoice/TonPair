@@ -1,0 +1,7 @@
+class: Participant
+table: participants
+fields:
+  id: int?
+  userId: int
+  hackathonId: int
+  status: ParticipantStatus

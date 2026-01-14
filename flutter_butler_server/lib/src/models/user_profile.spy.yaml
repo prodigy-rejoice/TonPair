@@ -1,0 +1,12 @@
+class: UserProfile
+table: user_profiles
+fields:
+  id: int?
+  displayName: String
+  email: String
+  skills: List<String>
+  skillLevels: Map<String, String>
+  goal: String
+  availability: String
+  timezone: String
+  createdAt: DateTime?
