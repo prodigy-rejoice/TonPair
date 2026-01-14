@@ -526,6 +526,7 @@ class _MatchRequestEndpoint {
     _i1.TestSessionBuilder sessionBuilder, {
     required int fromUserId,
     required int toUserId,
+    required int hackathonId,
   }) async {
     return _i1.callAwaitableFunctionAndHandleExceptions(() async {
       var _localUniqueSession =
@@ -541,6 +542,7 @@ class _MatchRequestEndpoint {
           parameters: _i1.testObjectToJson({
             'fromUserId': fromUserId,
             'toUserId': toUserId,
+            'hackathonId': hackathonId,
           }),
           serializationManager: _serializationManager,
         );
@@ -585,6 +587,41 @@ class _MatchRequestEndpoint {
                   _localCallContext.arguments,
                 )
                 as _i3.Future<_i6.MatchRequest>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
+  }
+
+  _i3.Future<List<_i6.MatchRequest>> getMatchRequests(
+    _i1.TestSessionBuilder sessionBuilder, {
+    required int userId,
+    required int hackathonId,
+  }) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+            endpoint: 'matchRequest',
+            method: 'getMatchRequests',
+          );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'matchRequest',
+          methodName: 'getMatchRequests',
+          parameters: _i1.testObjectToJson({
+            'userId': userId,
+            'hackathonId': hackathonId,
+          }),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue =
+            await (_localCallContext.method.call(
+                  _localUniqueSession,
+                  _localCallContext.arguments,
+                )
+                as _i3.Future<List<_i6.MatchRequest>>);
         return _localReturnValue;
       } finally {
         await _localUniqueSession.close();

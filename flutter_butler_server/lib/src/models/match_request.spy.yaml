@@ -4,5 +4,6 @@ fields:
   id: int?
   fromUserId: int
   toUserId: int
+  hackathonId: int
   status: MatchStatus
   createdAt: DateTime

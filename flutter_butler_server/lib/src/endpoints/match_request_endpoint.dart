@@ -7,6 +7,7 @@ class MatchRequestEndpoint extends Endpoint {
     Session session, {
     required int fromUserId,
     required int toUserId,
+    required int hackathonId,
   }) async {
     if (fromUserId == toUserId) {
       throw Exception('You cannot send a match request to yourself.');
@@ -26,6 +27,7 @@ class MatchRequestEndpoint extends Endpoint {
       where: (r) =>
           r.fromUserId.equals(fromUserId) &
           r.toUserId.equals(toUserId) &
+          r.hackathonId.equals(hackathonId) &
           r.status.equals(MatchStatus.pending),
     );
 
@@ -36,6 +38,7 @@ class MatchRequestEndpoint extends Endpoint {
     final request = MatchRequest(
       fromUserId: fromUserId,
       toUserId: toUserId,
+      hackathonId: hackathonId,
       status: MatchStatus.pending,
       createdAt: DateTime.now(),
     );
@@ -68,10 +71,12 @@ class MatchRequestEndpoint extends Endpoint {
     if (accept) {
       final participants = await Participant.db.find(
         session,
-        where: (p) => p.userId.inSet({
-          request.fromUserId,
-          request.toUserId,
-        }),
+        where: (p) =>
+            p.hackathonId.equals(request.hackathonId) &
+            p.userId.inSet({
+              request.fromUserId,
+              request.toUserId,
+            }),
       );
 
       for (final participant in participants) {
@@ -81,5 +86,21 @@ class MatchRequestEndpoint extends Endpoint {
     }
 
     return request;
+  }
+
+  Future<List<MatchRequest>> getMatchRequests(
+    Session session, {
+    required int userId,
+    required int hackathonId,
+  }) async {
+    return await MatchRequest.db.find(
+      session,
+      where: (request) =>
+          (request.toUserId.equals(userId) |
+              request.fromUserId.equals(userId)) &
+          request.hackathonId.equals(hackathonId),
+      orderBy: (request) => request.createdAt,
+      orderDescending: true,
+    );
   }
 }

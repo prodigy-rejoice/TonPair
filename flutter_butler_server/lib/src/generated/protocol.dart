@@ -27,6 +27,7 @@ import 'participant_status.dart' as _i12;
 import 'team.dart' as _i13;
 import 'user_profile.dart' as _i14;
 import 'package:flutter_butler_server/src/generated/mach_result.dart' as _i15;
+import 'package:flutter_butler_server/src/generated/match_request.dart' as _i16;
 export 'chat_message.dart';
 export 'greetings/greeting.dart';
 export 'hackathon.dart';
@@ -191,6 +192,12 @@ class Protocol extends _i1.SerializationManagerServer {
         ),
         _i2.ColumnDefinition(
           name: 'toUserId',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'hackathonId',
           columnType: _i2.ColumnType.bigint,
           isNullable: false,
           dartType: 'int',
@@ -513,6 +520,12 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == List<_i15.MatchResult>) {
       return (data as List)
               .map((e) => deserialize<_i15.MatchResult>(e))
+              .toList()
+          as T;
+    }
+    if (t == List<_i16.MatchRequest>) {
+      return (data as List)
+              .map((e) => deserialize<_i16.MatchRequest>(e))
               .toList()
           as T;
     }

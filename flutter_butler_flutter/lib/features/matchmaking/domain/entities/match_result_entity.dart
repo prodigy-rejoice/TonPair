@@ -1,11 +1,16 @@
-class MatchResult {
-  final int id;
-  final double score;
-  final List<String> reasons;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  MatchResult({
-    required this.id,
-    required this.score,
-    required this.reasons,
-  });
+part 'match_result_entity.freezed.dart';
+
+@freezed
+abstract class MatchResult with _$MatchResult {
+
+  const MatchResult._();
+
+  const factory MatchResult({
+    required int id,
+    required double score,
+    required List<String> reasons,
+    // int? requestId,
+  }) = _MatchResult;
 }

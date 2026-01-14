@@ -1,6 +1,5 @@
 import '../../domain/entities/match_result_entity.dart';
-import 'package:flutter_butler_client/flutter_butler_client.dart'
-    as sdk;
+import 'package:flutter_butler_client/flutter_butler_client.dart' as sdk;
 
 class MatchMakingMapper {
   static MatchResult toEntity(sdk.MatchResult model) {

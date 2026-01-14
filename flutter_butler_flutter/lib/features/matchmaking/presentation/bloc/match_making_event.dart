@@ -6,4 +6,10 @@ abstract class MatchMakingEvent with _$MatchMakingEvent {
     required int userId,
     required int hackathonId,
   }) = FindMatches;
+
+  const factory MatchMakingEvent.sendMatchRequest({
+    required int fromId,
+    required int hackathonId,
+    required MatchResult matchResult,
+  }) = SendMatchRequest;
 }

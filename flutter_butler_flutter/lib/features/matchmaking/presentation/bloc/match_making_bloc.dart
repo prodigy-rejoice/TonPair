@@ -21,5 +21,16 @@ class MatchMakingBloc extends Bloc<MatchMakingEvent, MatchMakingState> {
         (matchResults) => emit(MatchMakingState.success(matchResults)),
       );
     });
+    on<SendMatchRequest>((event, emit) async {
+      final result = await repository.sendMatchRequest(
+        fromId: event.fromId,
+        hackathonId: event.hackathonId,
+        matchResult: event.matchResult,
+      );
+      result.fold(
+        (failure) => emit(MatchMakingState.error(failure.message)),
+        (_) => emit(MatchMakingState.requestSent()),
+      );
+    });
   }
 }

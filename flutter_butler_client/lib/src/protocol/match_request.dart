@@ -18,6 +18,7 @@ abstract class MatchRequest implements _i1.SerializableModel {
     this.id,
     required this.fromUserId,
     required this.toUserId,
+    required this.hackathonId,
     required this.status,
     required this.createdAt,
   });
@@ -26,6 +27,7 @@ abstract class MatchRequest implements _i1.SerializableModel {
     int? id,
     required int fromUserId,
     required int toUserId,
+    required int hackathonId,
     required _i2.MatchStatus status,
     required DateTime createdAt,
   }) = _MatchRequestImpl;
@@ -35,6 +37,7 @@ abstract class MatchRequest implements _i1.SerializableModel {
       id: jsonSerialization['id'] as int?,
       fromUserId: jsonSerialization['fromUserId'] as int,
       toUserId: jsonSerialization['toUserId'] as int,
+      hackathonId: jsonSerialization['hackathonId'] as int,
       status: _i2.MatchStatus.fromJson((jsonSerialization['status'] as String)),
       createdAt: _i1.DateTimeJsonExtension.fromJson(
         jsonSerialization['createdAt'],
@@ -51,6 +54,8 @@ abstract class MatchRequest implements _i1.SerializableModel {
 
   int toUserId;
 
+  int hackathonId;
+
   _i2.MatchStatus status;
 
   DateTime createdAt;
@@ -62,6 +67,7 @@ abstract class MatchRequest implements _i1.SerializableModel {
     int? id,
     int? fromUserId,
     int? toUserId,
+    int? hackathonId,
     _i2.MatchStatus? status,
     DateTime? createdAt,
   });
@@ -72,6 +78,7 @@ abstract class MatchRequest implements _i1.SerializableModel {
       if (id != null) 'id': id,
       'fromUserId': fromUserId,
       'toUserId': toUserId,
+      'hackathonId': hackathonId,
       'status': status.toJson(),
       'createdAt': createdAt.toJson(),
     };
@@ -90,12 +97,14 @@ class _MatchRequestImpl extends MatchRequest {
     int? id,
     required int fromUserId,
     required int toUserId,
+    required int hackathonId,
     required _i2.MatchStatus status,
     required DateTime createdAt,
   }) : super._(
          id: id,
          fromUserId: fromUserId,
          toUserId: toUserId,
+         hackathonId: hackathonId,
          status: status,
          createdAt: createdAt,
        );
@@ -108,6 +117,7 @@ class _MatchRequestImpl extends MatchRequest {
     Object? id = _Undefined,
     int? fromUserId,
     int? toUserId,
+    int? hackathonId,
     _i2.MatchStatus? status,
     DateTime? createdAt,
   }) {
@@ -115,6 +125,7 @@ class _MatchRequestImpl extends MatchRequest {
       id: id is int? ? id : this.id,
       fromUserId: fromUserId ?? this.fromUserId,
       toUserId: toUserId ?? this.toUserId,
+      hackathonId: hackathonId ?? this.hackathonId,
       status: status ?? this.status,
       createdAt: createdAt ?? this.createdAt,
     );

@@ -3,6 +3,7 @@ import 'package:flutter_butler_flutter/config/app_config.dart';
 import 'package:flutter_butler_flutter/features/matchmaking/data/repositories/match_making_repo.dart';
 import 'package:flutter_butler_flutter/features/matchmaking/domain/repositories/matchmaking_repository.dart';
 import 'package:flutter_butler_flutter/features/matchmaking/presentation/bloc/match_making_bloc.dart';
+import 'package:flutter_butler_flutter/features/match_requests/presentation/bloc/match_requests_bloc.dart';
 import 'package:flutter_butler_flutter/features/user_profile/data/repositories/user_profile_repository_impl.dart';
 import 'package:flutter_butler_flutter/features/user_profile/domain/repositories/user_profile_repository.dart';
 import 'package:flutter_butler_flutter/features/user_profile/presentation/register/bloc/user_profile_bloc.dart';
@@ -40,5 +41,8 @@ Future<void> injector() async {
   );
   appInjector.registerFactory(
       () => MatchMakingBloc(repository: appInjector())
+  );
+  appInjector.registerFactory(
+      () => MatchRequestsBloc(repository: appInjector())
   );
 }

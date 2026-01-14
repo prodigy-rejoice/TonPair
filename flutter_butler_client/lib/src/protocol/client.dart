@@ -269,12 +269,14 @@ class EndpointMatchRequest extends _i2.EndpointRef {
   _i3.Future<_i6.MatchRequest> sendMatchRequest({
     required int fromUserId,
     required int toUserId,
+    required int hackathonId,
   }) => caller.callServerEndpoint<_i6.MatchRequest>(
     'matchRequest',
     'sendMatchRequest',
     {
       'fromUserId': fromUserId,
       'toUserId': toUserId,
+      'hackathonId': hackathonId,
     },
   );
 
@@ -288,6 +290,18 @@ class EndpointMatchRequest extends _i2.EndpointRef {
     {
       'requestId': requestId,
       'accept': accept,
+    },
+  );
+
+  _i3.Future<List<_i6.MatchRequest>> getMatchRequests({
+    required int userId,
+    required int hackathonId,
+  }) => caller.callServerEndpoint<List<_i6.MatchRequest>>(
+    'matchRequest',
+    'getMatchRequests',
+    {
+      'userId': userId,
+      'hackathonId': hackathonId,
     },
   );
 }

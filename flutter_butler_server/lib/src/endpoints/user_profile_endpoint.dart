@@ -9,6 +9,7 @@ class UserProfileEndpoint extends Endpoint {
   ) async {
     profile.createdAt = DateTime.now();
     final newProfile = await UserProfile.db.insertRow(session, profile);
+    await Participant.db.insertRow(session, Participant(userId: newProfile.id!, hackathonId: 1, status: ParticipantStatus.searching));
     return newProfile;
   }
 

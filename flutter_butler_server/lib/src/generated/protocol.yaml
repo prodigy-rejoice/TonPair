@@ -13,6 +13,7 @@ matchmaking:
 matchRequest:
   - sendMatchRequest:
   - respondToMatchRequest:
+  - getMatchRequests:
 userProfile:
   - createProfile:
   - getProfile:
